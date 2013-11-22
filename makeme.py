@@ -83,7 +83,8 @@ DEPENDENCIES = {
             "13.10": UBUNTU_DEFAULT_DEPS
         },
         "fedora": {
-            "18": FEDORA_DEFAULT_DEPS
+            "18": FEDORA_DEFAULT_DEPS,
+            "19": FEDORA_DEFAULT_DEPS
         },
         "debian": {
             "6.0.0": DEBIAN6_DEFAULT_DEPS,
