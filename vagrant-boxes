@@ -1,0 +1,9 @@
+fedora,18,http://puppet-vagrant-boxes.puppetlabs.com/fedora-18-x64-vbox4210.box
+centos,6.4,http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box
+debian,6.0.7,http://puppet-vagrant-boxes.puppetlabs.com/debian-607-x64-vbox4210.box
+debian,7.0rc1,http://puppet-vagrant-boxes.puppetlabs.com/debian-70rc1-x64-vbox4210.box
+sles,11sp1,http://puppet-vagrant-boxes.puppetlabs.com/sles-11sp1-x64-vbox4210.box
+ubuntu,precise,http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box
+ubuntu,quantal,http://cloud-images.ubuntu.com/vagrant/quantal/current/quantal-server-cloudimg-amd64-vagrant-disk1.box
+ubuntu,raring,http://cloud-images.ubuntu.com/vagrant/raring/current/raring-server-cloudimg-amd64-vagrant-disk1.box
+ubuntu,saucy,http://cloud-images.ubuntu.com/vagrant/saucy/current/saucy-server-cloudimg-amd64-vagrant-disk1.box
