@@ -23,6 +23,24 @@ UBUNTU_DEFAULT_DEPS = {
     "build": ["build-essential wget"]
 }
 
+FEDORA_DEFAULT_DEPS = {
+    "install-command": "sudo apt-get install -y %s",
+    "build": ["sudo yum groupinstall 'Development Tools'"],
+    "libs": {
+        "bz2": ["bzip2-libs", "bzip2-devel"],
+        "bdb": ["libdb", "libdb-devel"],
+        "ffi": ["libffi", "libffi-devel"],
+        "lzma": ["lzma", "lzma-devel"],
+        "ncurses": ["ncurses", "ncurses-devel"],
+        #"tinfo": ["libtinfo5", "libtinfo-dev"],
+        "ssl": ["openssl", "openssl-devel"],
+        "pcre": ["pcre", "pcre-devel"],
+        "readline": ["readline", "readline-devel"],
+        "sqlite": ["sqlite", "sqlite-devel"],
+        "expat": ["expat", "expat-devel"]
+    }
+}
+
 DEPENDENCIES = {
     "Linux": {
         "Ubuntu": {
@@ -30,6 +48,9 @@ DEPENDENCIES = {
             "12.10": UBUNTU_DEFAULT_DEPS,
             "13.04": UBUNTU_DEFAULT_DEPS,
             "13.10": UBUNTU_DEFAULT_DEPS
+        },
+        "fedora": {
+            "18": FEDORA_DEFAULT_DEPS
         }
     }
 }
@@ -124,4 +145,4 @@ def print_instructions(py_version, prefix):
 if __name__ == "__main__":
     for key, py_version in PY_MINOR_LATEST.items():
         if key in {"2.4", "2.5", "2.6", "2.7", "3.0.", "3.1", "3.2", "3.3"}:
-            print_instructions(py_version, "~/.pbt/vms")
+            print_instructions(py_version, "$HOME/.pbt/vms")
