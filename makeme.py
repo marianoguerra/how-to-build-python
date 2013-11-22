@@ -74,6 +74,24 @@ DEBIAN7_DEFAULT_DEPS = {
     "build": ["build-essential", "wget"]
 }
 
+SUSE_DEFAULT_DEPS = {
+    "install-command": "sudo zypper install -y %s",
+    "build": ["sudo zypper in -y -t pattern Basis-Devel"],
+    "use-install-command-for-build-install": False,
+    "libs": {
+        "bz2": ["libbz2-1", "libbz2-devel"],
+        "bdb": ["libdb-4_5", "libdb-4_5-devel"],
+        "ffi": ["libffi43", "libffi43-devel"],
+        "lzma": ["lzma", "lzma-devel"],
+        "ncurses": ["ncurses", "ncurses-devel"],
+        "ssl": ["libopenssl0_9_8", "libopenssl-devel"],
+        "pcre": ["pcre", "pcre-devel"],
+        "readline": ["libreadline5", "readline-devel"],
+        "sqlite": ["libsqlite3-0", "sqlite3-devel"],
+        "expat": ["libexpat1", "libexpat-devel"]
+    }
+}
+
 DEPENDENCIES = {
     "Linux": {
         "Ubuntu": {
@@ -85,6 +103,12 @@ DEPENDENCIES = {
         "fedora": {
             "18": FEDORA_DEFAULT_DEPS,
             "19": FEDORA_DEFAULT_DEPS
+        },
+        "centos": {
+            "6.4": FEDORA_DEFAULT_DEPS
+        },
+        "SuSE": {
+            "11": SUSE_DEFAULT_DEPS
         },
         "debian": {
             "6.0.0": DEBIAN6_DEFAULT_DEPS,
