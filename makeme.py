@@ -20,12 +20,14 @@ UBUNTU_DEFAULT_DEPS = {
         "expat": ["libexpat1", "libexpat1-dev"]
     },
     "install-command": "sudo apt-get install -y %s",
-    "build": ["build-essential wget"]
+    "build": ["build-essential", "wget"],
+    "use-install-command-for-build-install": True
 }
 
 FEDORA_DEFAULT_DEPS = {
-    "install-command": "sudo apt-get install -y %s",
+    "install-command": "sudo yum install -y %s",
     "build": ["sudo yum groupinstall 'Development Tools'"],
+    "use-install-command-for-build-install": False,
     "libs": {
         "bz2": ["bzip2-libs", "bzip2-devel"],
         "bdb": ["libdb", "libdb-devel"],
@@ -117,6 +119,8 @@ def print_instructions(py_version, prefix):
     else:
         libs = deps["libs"]
         build_deps = deps["build"]
+        _key = "use-install-command-for-build-install"
+        install_command_for_build = deps[_key]
         command = deps["install-command"]
         all_packages = []
         for lib_name, lib_packages in libs.items():
@@ -126,7 +130,11 @@ def print_instructions(py_version, prefix):
         print("set -e")
         print("START_DIR=$(pwd)")
         print("# install build dependencies")
-        print(command % " ".join(build_deps))
+        if install_command_for_build:
+            print(command % " ".join(build_deps))
+        else:
+            print("; ".join(build_deps))
+
         print()
         print("# install lib build deps")
         print(command % " ".join(all_packages))
