@@ -24,7 +24,7 @@ UBUNTU_DEFAULT_DEPS = {
 
 FEDORA_DEFAULT_DEPS = {
     "install-command": "sudo yum install -y %s",
-    "build": ["sudo yum groupinstall 'Development Tools'"],
+    "build": ["sudo yum groupinstall -y 'Development Tools'"],
     "use-install-command-for-build-install": False,
     "libs": {
         "bz2": ["bzip2-libs", "bzip2-devel"],
