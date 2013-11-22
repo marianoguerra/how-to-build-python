@@ -120,7 +120,7 @@ def print_instructions(py_version, prefix):
         libs = deps["libs"]
         build_deps = deps["build"]
         _key = "use-install-command-for-build-install"
-        install_command_for_build = deps[_key]
+        install_command_for_build = deps.get(_key, True)
         command = deps["install-command"]
         all_packages = []
         for lib_name, lib_packages in libs.items():
