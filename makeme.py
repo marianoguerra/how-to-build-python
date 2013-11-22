@@ -19,9 +19,8 @@ UBUNTU_DEFAULT_DEPS = {
         "sqlite": ["libsqlite3-0", "libsqlite3-dev"],
         "expat": ["libexpat1", "libexpat1-dev"]
     },
-    "install-command": "sudo apt-get install -y %s",
-    "build": ["build-essential", "wget"],
-    "use-install-command-for-build-install": True
+    "install-command": "sudo apt-get update && sudo apt-get install -y %s",
+    "build": ["build-essential", "wget"]
 }
 
 FEDORA_DEFAULT_DEPS = {
@@ -43,6 +42,24 @@ FEDORA_DEFAULT_DEPS = {
     }
 }
 
+DEBIAN_DEFAULT_DEPS = {
+    "libs": {
+        "bz2": ["libbz2-1.0", "libbz2-dev"],
+        "bdb": ["libdb4.8", "libdb4.8-dev"],
+        "ffi": ["libffi5", "libffi-dev"],
+        "lzma": ["liblzma2", "liblzma-dev"],
+        "ncurses": ["libncursesw5", "libncursesw5-dev"],
+        #"tinfo": ["libtinfo5", "libtinfo-dev"],
+        "ssl": ["libssl0.9.8", "libssl-dev"],
+        "pcre": ["libpcre3", "libpcre3-dev"],
+        "readline": ["libreadline6", "libreadline6-dev"],
+        "sqlite": ["libsqlite3-0", "libsqlite3-dev"],
+        "expat": ["libexpat1", "libexpat1-dev"]
+    },
+    "install-command": "sudo apt-get update && sudo apt-get install -y %s",
+    "build": ["build-essential", "wget"]
+}
+
 DEPENDENCIES = {
     "Linux": {
         "Ubuntu": {
@@ -53,6 +70,16 @@ DEPENDENCIES = {
         },
         "fedora": {
             "18": FEDORA_DEFAULT_DEPS
+        },
+        "debian": {
+            "6.0.0": DEBIAN_DEFAULT_DEPS,
+            "6.0.1": DEBIAN_DEFAULT_DEPS,
+            "6.0.2": DEBIAN_DEFAULT_DEPS,
+            "6.0.3": DEBIAN_DEFAULT_DEPS,
+            "6.0.4": DEBIAN_DEFAULT_DEPS,
+            "6.0.5": DEBIAN_DEFAULT_DEPS,
+            "6.0.6": DEBIAN_DEFAULT_DEPS,
+            "6.0.7": DEBIAN_DEFAULT_DEPS
         }
     }
 }
@@ -152,5 +179,5 @@ def print_instructions(py_version, prefix):
 
 if __name__ == "__main__":
     for key, py_version in PY_MINOR_LATEST.items():
-        if key in {"2.4", "2.5", "2.6", "2.7", "3.0.", "3.1", "3.2", "3.3"}:
+        if key in set(["2.4", "2.5", "2.6", "2.7", "3.0.", "3.1", "3.2", "3.3"]):
             print_instructions(py_version, "$HOME/.pbt/vms")
