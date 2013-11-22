@@ -12,7 +12,6 @@ UBUNTU_DEFAULT_DEPS = {
         "ffi": ["libffi6", "libffi-dev"],
         "lzma": ["liblzma5", "liblzma-dev"],
         "ncurses": ["libncursesw5", "libncursesw5-dev"],
-        "tinfo": ["libtinfo5", "libtinfo-dev"],
         "ssl": ["libssl1.0.0", "libssl-dev"],
         "pcre": ["libpcre3", "libpcre3-dev"],
         "readline": ["libreadline6", "libreadline6-dev"],
@@ -33,7 +32,6 @@ FEDORA_DEFAULT_DEPS = {
         "ffi": ["libffi", "libffi-devel"],
         "lzma": ["lzma", "lzma-devel"],
         "ncurses": ["ncurses", "ncurses-devel"],
-        #"tinfo": ["libtinfo5", "libtinfo-dev"],
         "ssl": ["openssl", "openssl-devel"],
         "pcre": ["pcre", "pcre-devel"],
         "readline": ["readline", "readline-devel"],
@@ -42,15 +40,31 @@ FEDORA_DEFAULT_DEPS = {
     }
 }
 
-DEBIAN_DEFAULT_DEPS = {
+DEBIAN6_DEFAULT_DEPS = {
     "libs": {
         "bz2": ["libbz2-1.0", "libbz2-dev"],
         "bdb": ["libdb4.8", "libdb4.8-dev"],
         "ffi": ["libffi5", "libffi-dev"],
         "lzma": ["liblzma2", "liblzma-dev"],
         "ncurses": ["libncursesw5", "libncursesw5-dev"],
-        #"tinfo": ["libtinfo5", "libtinfo-dev"],
         "ssl": ["libssl0.9.8", "libssl-dev"],
+        "pcre": ["libpcre3", "libpcre3-dev"],
+        "readline": ["libreadline6", "libreadline6-dev"],
+        "sqlite": ["libsqlite3-0", "libsqlite3-dev"],
+        "expat": ["libexpat1", "libexpat1-dev"]
+    },
+    "install-command": "sudo apt-get update && sudo apt-get install -y %s",
+    "build": ["build-essential", "wget"]
+}
+
+DEBIAN7_DEFAULT_DEPS = {
+    "libs": {
+        "bz2": ["libbz2-1.0", "libbz2-dev"],
+        "bdb": ["libdb5.1", "libdb5.1-dev"],
+        "ffi": ["libffi5", "libffi-dev"],
+        "lzma": ["liblzma5", "liblzma-dev"],
+        "ncurses": ["libncursesw5", "libncursesw5-dev"],
+        "ssl": ["libssl1.0.0", "libssl-dev"],
         "pcre": ["libpcre3", "libpcre3-dev"],
         "readline": ["libreadline6", "libreadline6-dev"],
         "sqlite": ["libsqlite3-0", "libsqlite3-dev"],
@@ -72,14 +86,18 @@ DEPENDENCIES = {
             "18": FEDORA_DEFAULT_DEPS
         },
         "debian": {
-            "6.0.0": DEBIAN_DEFAULT_DEPS,
-            "6.0.1": DEBIAN_DEFAULT_DEPS,
-            "6.0.2": DEBIAN_DEFAULT_DEPS,
-            "6.0.3": DEBIAN_DEFAULT_DEPS,
-            "6.0.4": DEBIAN_DEFAULT_DEPS,
-            "6.0.5": DEBIAN_DEFAULT_DEPS,
-            "6.0.6": DEBIAN_DEFAULT_DEPS,
-            "6.0.7": DEBIAN_DEFAULT_DEPS
+            "6.0.0": DEBIAN6_DEFAULT_DEPS,
+            "6.0.1": DEBIAN6_DEFAULT_DEPS,
+            "6.0.2": DEBIAN6_DEFAULT_DEPS,
+            "6.0.3": DEBIAN6_DEFAULT_DEPS,
+            "6.0.4": DEBIAN6_DEFAULT_DEPS,
+            "6.0.5": DEBIAN6_DEFAULT_DEPS,
+            "6.0.6": DEBIAN6_DEFAULT_DEPS,
+            "6.0.7": DEBIAN6_DEFAULT_DEPS,
+
+            "7.0": DEBIAN7_DEFAULT_DEPS,
+            "7.1": DEBIAN7_DEFAULT_DEPS,
+            "7.2": DEBIAN7_DEFAULT_DEPS
         }
     }
 }
