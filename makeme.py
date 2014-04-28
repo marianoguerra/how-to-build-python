@@ -98,7 +98,8 @@ DEPENDENCIES = {
             "12.04": UBUNTU_DEFAULT_DEPS,
             "12.10": UBUNTU_DEFAULT_DEPS,
             "13.04": UBUNTU_DEFAULT_DEPS,
-            "13.10": UBUNTU_DEFAULT_DEPS
+            "13.10": UBUNTU_DEFAULT_DEPS,
+            "14.04": UBUNTU_DEFAULT_DEPS
         },
         "fedora": {
             "18": FEDORA_DEFAULT_DEPS,
@@ -128,7 +129,8 @@ DEPENDENCIES = {
 }
 
 PY_MINOR_MAX = {
-    "3.3": 3,
+    "3.4": 0,
+    "3.3": 5,
     "3.2": 5,
     "3.1": 5,
     "3.0": 1,
@@ -156,7 +158,7 @@ for key, minor_max in PY_MINOR_MAX.items():
 PY_MAJOR_LATEST = {
     "1": "1.6.1",
     "2": "2.7.6",
-    "3": "3.3.3",
+    "3": "3.4.0",
 }
 
 PY_LATEST = {}
@@ -222,5 +224,5 @@ def print_instructions(py_version, prefix):
 
 if __name__ == "__main__":
     for key, py_version in PY_MINOR_LATEST.items():
-        if key in set(["2.4", "2.5", "2.6", "2.7", "3.0.", "3.1", "3.2", "3.3"]):
+        if key in ["2.4", "2.5", "2.6", "2.7", "3.0.", "3.1", "3.2", "3.3", "3.4"]:
             print_instructions(py_version, "$HOME/.pbt/vms")
